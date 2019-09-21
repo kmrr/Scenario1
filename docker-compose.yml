@@ -3,6 +3,7 @@ version: "3"
 services:
   php:
     build: ./php
+    container_name: php
     volumes:
       - ./www/html:/var/www/html
     networks:
@@ -14,20 +15,19 @@ services:
       - mysql
   mysql:
     image: mysql:latest
+    container_name: mysql
     environment:
       - MYSQL_ROOT_PASSWORD=pass
       - MYSQL_DATABASE=TEST
       - MYSQL_USER=User
       - MYSQL_PASSWORD=12345678
       - TZ='Asia/Tokyo'
-    ports:
-      - 13306:3306
     networks:
       app_net:
         ipv4_address: 172.30.0.2
     volumes:
       - ./initdb.d:/docker-entrypoint-initdb.d
-
+      - ./mysql:/etc/mysql/conf.d
 networks:
   app_net:
     driver: bridge

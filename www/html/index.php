@@ -1,5 +1,5 @@
 <?php 
-    $link = mysqli_connect('172.30.0.2', 'User', '12345678','TEST', 13306); 
+    $link = mysqli_connect('mysql', 'User', '12345678','TEST', 3306); 
     if(mysqli_connect_errno()){ 
         die('Cannot connect DB');
     }else{
@@ -27,6 +27,7 @@
             <tr>
                 <td>id</td>
                 <td>名前</td>
+                <td>店舗数</td>
             </tr>
             <?php
                 $sql = 'select * from store_info where name = "'.$word.'"';
