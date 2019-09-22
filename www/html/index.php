@@ -1,5 +1,5 @@
 <?php 
-    $link = mysqli_connect('mysql', 'User', '12345678','TEST', 3306); 
+    $link = mysqli_connect('mysql', 'root', 'pass','TEST', 3306); 
     if(mysqli_connect_errno()){ 
         die('Cannot connect DB');
     }else{
@@ -10,7 +10,7 @@
 <html>
   <head>
       <script>
-          function(){
+          function submit(){
               document.form1.submit();
           }
       </script>
@@ -31,7 +31,6 @@
             </tr>
             <?php
                 $sql = 'select * from store_info where name = "'.$word.'"';
-
                 $result = $link->query($sql);
                 if(!$result){
                     echo $link->error;
@@ -42,7 +41,9 @@
                 }
                 $result->free();
                 $link->close();
-
+                if(count($rows) <= 0){
+                    exit();
+                }
                 foreach($rows as $row){
                     echo "<tr>";
                     echo "    <td>".$row['id']."</td>";

@@ -1,5 +1,5 @@
 <?php 
-    $link = mysqli_connect('mysql', 'User', '12345678','TEST', 3306); 
+    $link = mysqli_connect('mysql', 'root', 'pass','TEST', 3306); 
     if(mysqli_connect_errno()){ 
         die('Cannot connect DB');
     }else{
@@ -10,7 +10,7 @@
 <html>
   <head>
       <script>
-          function(){
+          function submit(){
               document.form1.submit();
           }
       </script>
